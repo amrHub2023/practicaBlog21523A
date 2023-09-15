@@ -1,0 +1,16 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:Verdana, Geneva, Tahoma, sans-serif
+}
+
+img {
+    
+    width: 200px;
+    height: 200px;       
+    background-size:cover;
+    background-position: center;    
+    box-shadow: 0 1px 6px 1px rgba(0, 0,0, 0.8);              
+  
+}
