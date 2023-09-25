@@ -43,7 +43,7 @@ DB_NAME=nombre_de_la_base_de_datos
 
 ![Node Express](https://somospnt.com/images/blog/zojuy79lo3fn3qdt7g6p.png)
 
-El servidor estará disponible en `http://localhost:5000`.
+El servidor estará disponible en `http://localhost:4000`.
 
 ## 📱 Uso 📲
 
