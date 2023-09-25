@@ -4,45 +4,54 @@
 const { Router } = require('express');
 const router = Router()
 const {
-    actualizarPublicacion,
     crearPublicacion,
-    eliminarPublicacion,
-    obtenerPublicacion, 
-    obtenerPublicaciones
+    obtenerPublicaciones,
+    obtenerPublicacion,
+    actualizarPublicacion,    
+    eliminarPublicacion     
+    
 } = require('../controllers/blog.controllers');
 
-
+ 
 // ==================================================
 //         Rutas para renderizar vistas
 // ==================================================
-
+//Muestra la vista principal
 router.get('/', (req, res) => {
     res.render('home')
 })  
 
 // Ruta para devolver la vista admin
-router.get('/admin', (req, res)=> {
+router.get('/admin', async (req, res)=> {
     res.render('admin')
 })
 
 // Ruta para devolver la vista admin
-router.get('/admin/:id', (req, res)=> {
-    res.render('editar', { id: req.params.id })
+//agregado de lauti
+router.get('/editar/:id', async (req, res)=> {
+    res.render('editar', { id:req.params.id })
 })
 
+// Ruta para eliminar una publicación
+//agregado de Lauti
+router.get("/publicacion/:id", async (req, res) => {
+  const id = req.params.id;
+  eliminarPublicacion(id);
+  res.redirect("/");
+})
 
 // ==================================================
 //         Rutas para CRUD de Publicaciones
 // ==================================================
 
-// Crear nueva publicación
+// Crear nueva publicación Admin.js
 router.post('/publicacion', crearPublicacion);
 
-// Obtener todas las publicaciones
+// Obtener todas las publicaciones home.js
 router.get('/publicaciones', obtenerPublicaciones);
 
 // Obtener una publicación
-router.get('/publicacion/:id', obtenerPublicacion)
+router.get('/publicacion/:id', obtenerPublicacion);
 
 // Actualizar una publicación
 router.put('/publicacion/:id', actualizarPublicacion);

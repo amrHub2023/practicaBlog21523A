@@ -26,6 +26,11 @@ const PublicacionesBlog = sequelize.define('Publicaciones', {
 url_producto: {
   type: DataTypes.STRING,
   allowNull: false,
+},
+
+nombre: {
+  type: DataTypes.STRING,
+  allowNull: false,
 }
 
 },{

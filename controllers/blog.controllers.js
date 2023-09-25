@@ -1,5 +1,4 @@
 const ctrl = {}    //se importa de la capeta models/Publicaciones
-
 const MisPublicaciones = require('../models/Publicaciones');
 
 ctrl.crearPublicacion = async (req, res) => {
@@ -8,34 +7,53 @@ ctrl.crearPublicacion = async (req, res) => {
         const publicacion = await MisPublicaciones.create(req.body);
         res.send({
             msg: "Publicación creada con éxito",
-            publicacion
-        })
+            publicacion  //que hace esta linea?
+        });
     } catch (error) {
         console.log(error)
-        return res.status(500).json({
-            msg: "Error al crear nueva publicación"
-        })  
+        return res.status(500).json({msg: "Error al crear nueva publicación"});  
     }
 
-}
+};
 
 // Se consultan todas las publicaciones
 ctrl.obtenerPublicaciones = async (req, res) => {
     const publicaciones = await MisPublicaciones.findAll();
     res.json(publicaciones)
+};
+
+// para consultar una publicacion con get
+ctrl.obtenerPublicacion = async (req, res) => {
+    //const  id  = req.params;  
+    try { 
+    const publicacion = await MisPublicaciones.findByPk(req.params.id);
+    if (publicacion)  {
+    res.json(publicacion);    
+    return publicacion;
+}   else {
+    res.status(404).json({msg:"La publicacion que busca no existe" });
 }
+ }  catch (error) {
+    console.error(error);
+    res.status(500).json({ msg: "Error al obtener la publicación" });
+ }
+};
 
 ctrl.actualizarPublicacion = async (req, res) => {
-    const { id } = req.params;
+    try { 
+        const  id  = req.params;    
+        const publicacion = await MisPublicaciones.findByPk(id);    
+        publicacion.set(req.body);
+        await publicacion.save() // Con esta instrucción se guarda en la BD
 
-    const publicacion = await MisPublicaciones.findByPk(id)
-    publicacion.set(req.body)
-
-    await publicacion.save() // Con esta instrucción se guarda en la BD
-
-    res.json({
+        res.json({
         msg: "Publicación actualizada correctamente"
-    })
+    });
+}  catch (error) {
+        console.error(error);
+        res.status(500).json({ msg: "Error al actualizar la publicación" });
+
+    }
 };
 
 ctrl.eliminarPublicacion = async (req, res) => {
@@ -49,14 +67,10 @@ ctrl.eliminarPublicacion = async (req, res) => {
 
     res.json({
         msg: "Publicación eliminada correctamente"
-    })
+    });
 
 };
 
-ctrl.obtenerPublicacion = async (req, res) => {
-    const publicacion = await MisPublicaciones.findByPk(req.params.id)
-    return publicacion;
-};
 
 
 

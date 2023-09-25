@@ -14,3 +14,13 @@ img {
     box-shadow: 0 1px 6px 1px rgba(0, 0,0, 0.8);              
   
 }
+.container {
+    background-color:rgb(117 190 218 / 0.5);
+}
+.parrafo {
+background-color: rgba(255, 255, 128, .5);
+
+}
+.parrafo-editar {
+    background-color:rgb(124, 125, 126);
+}

@@ -1,7 +1,6 @@
 // Referencia al elemento de formulario html
 const formGuardar = document.querySelector("#form-guardar")
 
-
 formGuardar.addEventListener('submit', async (e) => {
     e.preventDefault();
 
@@ -11,6 +10,7 @@ formGuardar.addEventListener('submit', async (e) => {
     const url_imagen = document.querySelector('#url-img').value;
     const url_producto = document.querySelector('#url_producto').value;
     const fecha = document.querySelector('#fecha').value;
+    const nombre =document.querySelector('#nombre').value;
 
     // Enviar al servidor
     const response = await fetch('/publicacion', {
@@ -18,7 +18,7 @@ formGuardar.addEventListener('submit', async (e) => {
         headers: {
             'Content-Type':'application/json'
         },
-        body: JSON.stringify({ titulo, descripcion, url_imagen,url_producto, fecha})
+        body: JSON.stringify({ titulo, descripcion, url_imagen, url_producto, fecha,nombre})
     })
     const data = await response.json();
 

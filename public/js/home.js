@@ -19,11 +19,10 @@ const mostrarPublicaciones = (publicaciones, elementoHtml) => {
                 <a href="${publicacion.url_producto}" 
                <h5> ${publicacion.titulo}</h5>
                 </a>
-                <p> ${publicacion.descripcion}</p>
-
-                <p> ${publicacion.url_producto}</p> 
+                <p> ${publicacion.descripcion}</p>               
 
                 <p> ${publicacion.fecha}</p>
+                <p> ${publicacion.nombre}</p>
             </div>
             </section>
         `
@@ -31,6 +30,7 @@ const mostrarPublicaciones = (publicaciones, elementoHtml) => {
 
     // Se crea la lista
     elementoHtml.innerHTML = secciones;
+    //  <p> ${publicacion.url_producto}</p>
 
 }
 
