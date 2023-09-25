@@ -66,3 +66,4 @@ Este proyecto proporciona una interfaz de usuario basada en EJS para interactuar
 ##  Autor 
 
 - [@AlejandroMoreno](https://github.com/amrHub2023/practicaBlog21523A)
+https://github.com/amrHub2023/practicaBlog21523A
