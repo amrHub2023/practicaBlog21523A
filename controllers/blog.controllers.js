@@ -22,20 +22,16 @@ ctrl.obtenerPublicaciones = async (req, res) => {
     res.json(publicaciones)
 };
 
-// para consultar una publicacion con get
+// para consultar una publicacion 
 ctrl.obtenerPublicacion = async (req, res) => {
     //const  id  = req.params;  
     try { 
     const publicacion = await MisPublicaciones.findByPk(req.params.id);
-    if (publicacion)  {
-    res.json(publicacion);    
-    return publicacion;
-}   else {
-    res.status(404).json({msg:"La publicacion que busca no existe" });
-}
- }  catch (error) {
+    return  res.json(publicacion);
+
+}   catch (error) {
     console.error(error);
-    res.status(500).json({ msg: "Error al obtener la publicación" });
+    res.status(500).json({ msg: "Error al tratar de obtener la publicación" });
  }
 };
 

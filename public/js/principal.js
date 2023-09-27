@@ -26,6 +26,7 @@ const obtenerPublicaciones = async () => {
   };
   
   // Función para eliminar una publicación específica en base a su id
+  
   function eliminarPublicacion(id) {
     fetch(`/publicacion/${id}`, {
       method: "DELETE",

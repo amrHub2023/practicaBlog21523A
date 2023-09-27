@@ -30,15 +30,29 @@ const mostrarPublicaciones = (publicaciones, elementoHtml) => {
 
     // Se crea la lista
     elementoHtml.innerHTML = secciones;
-    //  <p> ${publicacion.url_producto}</p>
 
 }
+
+const eliminarPublicacion = async (id) => {
+    
+    // Se envía la petición al servidor
+    const response = await fetch(`/api/publicacion/${id}`, {
+        method: 'delete'
+    })
+
+    const data = await response.json();
+    alert(data.msg)
+    location.reload();
+}
+
+
 
 
 
 document.addEventListener('DOMContentLoaded', async () => {
 
     const publicaciones = await obtenerPublicaciones()
+    if(!publicaciones) return alert('Error al obtener las publicaciones')
     console.log(publicaciones)
 
 
